@@ -1,13 +1,13 @@
 package com.interview.controller;
 
+import com.interview.model.Product;
 import com.interview.model.ProductAddRequest;
 import com.interview.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -16,6 +16,12 @@ public class ProductController {
 
     @Autowired
     ProductService productService;
+
+    @GetMapping("/getAll")
+    public List<Product> getAllProducts()
+    {
+        return productService.listAllProducts();
+    }
 
     @PostMapping
     public void addProduct(@RequestBody ProductAddRequest productAddRequest)

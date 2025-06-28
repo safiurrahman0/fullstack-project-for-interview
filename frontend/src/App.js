@@ -6,7 +6,7 @@ function App() {
   const [productName, setProductName] = useState("");
 
   useEffect(() => {
-    axios.get("/products")
+    axios.get("api/v1/products/getAll")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Error loading products:", err));
   }, []);
@@ -16,7 +16,7 @@ function App() {
     if (!productName.trim()) return;
 
     try {
-      const res = await axios.post("/products", { name: productName });
+      const res = await axios.post("api/v1/products", { name: productName });
       setProducts([...products, res.data]);
       setProductName("");
     } catch (err) {
