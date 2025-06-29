@@ -17,12 +17,21 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
+
+    /**
+     * API to return list of all Products stored in DB
+     * @return
+     */
     @GetMapping("/getAll")
     public List<Product> getAllProducts()
     {
         return productService.listAllProducts();
     }
 
+    /**
+     * API to save a Product with name to DB
+     * @param productAddRequest
+     */
     @PostMapping
     public void addProduct(@RequestBody ProductAddRequest productAddRequest)
     {
